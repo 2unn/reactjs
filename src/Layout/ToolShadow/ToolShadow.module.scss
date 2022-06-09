@@ -1,0 +1,137 @@
+//Slider
+
+.slider-wrapper {
+  margin: 2rem auto;
+  width: 90%;
+}
+
+.label {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.range {
+  flex: 1;
+  -webkit-appearance: none;
+  -webkit-transition: 0.2s;
+  height: 5px;
+  width: 100%;
+  border-radius: 3px;
+  outline: none;
+
+  &:hover ~ .slider-value {
+    visibility: unset;
+  }
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid rgb(196, 205, 213);
+  cursor: grab;
+}
+
+.slider-value {
+  position: absolute;
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-top: 3px;
+  border-radius: 3px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  user-select: none;
+}
+
+//Color pick
+
+.colorpick-wrapper {
+  padding-top: 0.5rem;
+}
+
+// Layer
+ul {
+  list-style: none;
+}
+
+.add_layer {
+  border-top: 1px solid;
+}
+
+.add_layer-btn {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #fff;
+  padding: 7px 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(177, 177, 177);
+
+  &:hover {
+    background-color: rgb(229, 228, 228);
+  }
+}
+
+.layer-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.45rem;
+  padding: 5px;
+  width: 100%;
+  color: #333;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: rgb(229, 228, 228);
+    cursor: all-scroll;
+    user-select: none;
+  }
+}
+
+.active {
+  background-color: #5c6ac4;
+  color: #fff;
+
+  & .icon {
+    fill: #fff;
+  }
+
+  &:hover {
+    background-color: #535ea7;
+  }
+}
+
+.icon {
+  width: 20px;
+  margin-top: 6px;
+  margin-right: 5px;
+  height: 20px;
+  fill: #333;
+}
+
+.front {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.over {
+  opacity: 0.3;
+}

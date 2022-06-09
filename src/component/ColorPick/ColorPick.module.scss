@@ -1,0 +1,16 @@
+.wrapper {
+  border: 1px solid #dfe3e8;
+  display: inline-flex;
+  align-self: center;
+  margin: 2rem;
+  border-radius: 3px;
+
+  & input {
+    display: block;
+    background-color: transparent;
+    cursor: pointer;
+    width: 41px;
+    height: 35px;
+    border-radius: 3px;
+  }
+}
