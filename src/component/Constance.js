@@ -37,14 +37,15 @@ function getParent(element, selector) {
   }
 }
 
-const initValue =  {
-  
+const initValue = function (id)  {
+  return {
+    id:id,
     shiftright: initShiftRight,
     shiftdown: initShiftDown,
     blur: initBlur,
     opacity: initOpacity,
     color: initColorShadow,
- 
+  }
 };
 
 const initShadow = changeValue(

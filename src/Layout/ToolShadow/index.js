@@ -20,7 +20,7 @@ import LayerItem from "./LayerItem";
 const cx = classNames.bind(styles);
 
 function ToolShadow({ shadowValues, setTextShadowStyle }) {
-  const [valueSaved, setvalueSaved] = useState([initValue]);
+  const [valueSaved, setvalueSaved] = useState([initValue(1)]);
   const [currentItem, setCurrentItem] = useState(1);
   const [shiftright, setShiftright] = useState(initShiftRight);
   const [shiftdown, setShiftDown] = useState(initShiftDown);
@@ -55,29 +55,41 @@ function ToolShadow({ shadowValues, setTextShadowStyle }) {
   }, [Value]);
 
   useEffect(() => {
-    if (currentItem > 0 && currentItem <= valueSaved.length) {
-      console.log(currentItem, valueSaved);
-      setShiftright(valueSaved[currentItem - 1].shiftright);
-      setShiftDown(valueSaved[currentItem - 1].shiftdown);
-      setBlur(valueSaved[currentItem - 1].blur);
-      setOpacity(valueSaved[currentItem - 1].opacity);
-      setColor(valueSaved[currentItem - 1].color);
+    if (currentItem > 0) {
+      if (currentItem <= valueSaved.length) {
+        setShiftright(valueSaved[currentItem - 1].shiftright);
+        setShiftDown(valueSaved[currentItem - 1].shiftdown);
+        setBlur(valueSaved[currentItem - 1].blur);
+        setOpacity(valueSaved[currentItem - 1].opacity);
+        setColor(valueSaved[currentItem - 1].color);
+      } else {
+        setShiftright(valueSaved[valueSaved.length - 1].shiftright);
+        setShiftDown(valueSaved[valueSaved.length - 1].shiftdown);
+        setBlur(valueSaved[valueSaved.length - 1].blur);
+        setOpacity(valueSaved[valueSaved.length - 1].opacity);
+        setColor(valueSaved[valueSaved.length - 1].color);
+      }
     }
   }, [currentItem]);
 
   function handleAddLayer() {
     setTextShadowStyle((pre) => [...pre, initShadow]);
-    setvalueSaved((pre) => [...pre, initValue]);
+    setvalueSaved((pre) => [...pre, initValue(valueSaved.length + 1)]);
   }
 
   function handleDelete(id) {
     if (shadowValues.length > 1) {
-      setCurrentItem(id - 1);
       setTextShadowStyle((pre) => {
-        const newValue = pre.filter((val,i)=> {
-          return i !== id - 1
-        })
-        return newValue
+        const newValue = pre.filter((val, i) => {
+          return i !== id - 1;
+        });
+        return newValue;
+      });
+      setvalueSaved((pre) => {
+        const newValue = pre.filter((val, i) => {
+          return i !== id - 1;
+        });
+        return newValue;
       });
     }
   }
